@@ -1,0 +1,5 @@
+module.exports = {
+    PORT: 3000,
+    SESSION_DURATION_HOURS: 6,
+    SESSION_CLEANUP_CHANCE: 0.05
+};
