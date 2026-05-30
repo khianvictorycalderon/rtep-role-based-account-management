@@ -291,7 +291,7 @@ export default function Account() {
   const fetchSessions = useCallback(async (page = 1) => {
     setSessionsLoading(true);
     try {
-      const res = await axios.get(`${BUILT_IN_API_URLS.sesssions}?page=${page}`, { withCredentials: true });
+      const res = await axios.get(`${BUILT_IN_API_URLS.sessions}?page=${page}`, { withCredentials: true });
       setSessions(res.data.sessions);
       setSessionPagination(res.data.pagination);
     } catch {
@@ -367,7 +367,7 @@ export default function Account() {
   const handleRevokeSession = async (sessionId: string) => {
     setRevokingId(sessionId);
     try {
-      await axios.delete(`${BUILT_IN_API_URLS.sesssions}/${sessionId}`, { withCredentials: true });
+      await axios.delete(`${BUILT_IN_API_URLS.sessions}/${sessionId}`, { withCredentials: true });
       showMsg(setSessionMessage, "success", "Session revoked");
       await fetchSessions(sessionPagination.page);
     } catch (err: any) {
@@ -380,7 +380,7 @@ export default function Account() {
   const handleRevokeAll = async () => {
     setIsRevokingAll(true);
     try {
-      await axios.delete(BUILT_IN_API_URLS.sesssions, { withCredentials: true });
+      await axios.delete(BUILT_IN_API_URLS.sessions, { withCredentials: true });
       showMsg(setSessionMessage, "success", "All other sessions revoked");
       await fetchSessions(1);
     } catch (err: any) {
